@@ -5,8 +5,7 @@ down = -1;
 left = -1;
 right = -1;
 
-hCharacterSpeed = 0;
-vCharacterSpeed = 0;
+h_character_speed = 0;
+v_character_speed = 0;
 
-characterSpeed = 4;
-
+CHARACTER_SPEED = 4;
