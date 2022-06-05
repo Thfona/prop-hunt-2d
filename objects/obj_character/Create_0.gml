@@ -9,3 +9,4 @@ h_character_speed = 0;
 v_character_speed = 0;
 
 CHARACTER_SPEED = 4;
+
