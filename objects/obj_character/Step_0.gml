@@ -1,6 +1,16 @@
 /// @description Character - Step
 
-#region // FUNCTIONS
+#region // MOVEMENTS
+up = keyboard_check(ord("W"));
+down = keyboard_check(ord("S"));
+left = keyboard_check(ord("A"));
+right = keyboard_check(ord("D"));
+
+h_character_speed = (right - left) * CHARACTER_SPEED;
+v_character_speed = (down - up) * CHARACTER_SPEED;
+#endregion
+
+#region // COLLISION
 function will_collide(axis, collision_obj) {
 	return axis == "x"
 		? place_meeting(x + h_character_speed, y, collision_obj)
@@ -39,16 +49,6 @@ function collision_object_detector(axis, collision_objects) {
 	   i -= 1;
 	}
 }
-#endregion
-
-#region // MAIN
-up = keyboard_check(ord("W"));
-down = keyboard_check(ord("S"));
-left = keyboard_check(ord("A"));
-right = keyboard_check(ord("D"));
-
-h_character_speed = (right - left) * CHARACTER_SPEED;
-v_character_speed = (down - up) * CHARACTER_SPEED;
 
 collision_objects = [obj_wall, obj_can_of_soda, obj_table];
 
@@ -57,5 +57,11 @@ collision_object_detector("y", collision_objects);
 
 x += h_character_speed;
 y += v_character_speed;
+#endregion
+
+#region // MAIN
+
+
+
 #endregion
 
