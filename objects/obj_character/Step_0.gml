@@ -59,9 +59,21 @@ x += h_character_speed;
 y += v_character_speed;
 #endregion
 
-#region // MAIN
+#region // ANIMATION
 
+if (h_character_speed != 0) {
+	xscale = sign(h_character_speed);
+}
 
+image_xscale = xscale;
+
+#endregion
+
+#region // MUTATION
+
+if keyboard_check_pressed(vk_space) {
+	image_index = spr_can_of_soda;
+}
 
 #endregion
 
