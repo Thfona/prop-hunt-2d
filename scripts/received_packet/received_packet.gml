@@ -12,6 +12,18 @@ function received_packet(buffer){
 
 			break;
 
+		case network.player_disconnect:
+			var _socket = buffer_read(buffer, buffer_u8);
+			var _player = ds_map_find_value(socket_to_instance_id, _socket);
+
+			with(_player) {
+				instance_destroy();
+			}
+
+			ds_map_delete(socket_to_instance_id, _socket);
+
+			break;
+
 		case network.move:
 			var _socket = buffer_read(buffer, buffer_u8);
 			var x_value = buffer_read(buffer, buffer_u16);
