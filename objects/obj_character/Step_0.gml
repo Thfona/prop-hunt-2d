@@ -48,17 +48,14 @@ left = keyboard_check(ord("A"));
 right = keyboard_check(ord("D"));
 
 h_character_speed = (right - left) * CHARACTER_SPEED;
+v_character_speed = (down - up) * CHARACTER_SPEED;
 
 collision_objects = [obj_wall, obj_can_of_soda, obj_table];
 
 collision_object_detector("x", collision_objects);
-
-x += h_character_speed;
-
-v_character_speed = (down - up) * CHARACTER_SPEED;
-
 collision_object_detector("y", collision_objects);
 
+x += h_character_speed;
 y += v_character_speed;
 #endregion
 
