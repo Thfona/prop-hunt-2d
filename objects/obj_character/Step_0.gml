@@ -1,5 +1,13 @@
 /// @description Character - Step
 
+#region // STATES
+
+mutation_state = spr_index == 0;
+collision_object_state = mutation_state ? COLLISION_OBJECTS.character : COLLISION_OBJECTS.mutated;
+mutable_objects_state = 0;
+
+#endregion
+
 #region // MOVEMENTS
 up = keyboard_check(ord("W"));
 down = keyboard_check(ord("S"));
@@ -50,10 +58,8 @@ function collision_object_detector(axis, collision_objects) {
 	}
 }
 
-collision_objects = [obj_wall, obj_can_of_soda, obj_table];
-
-collision_object_detector("x", collision_objects);
-collision_object_detector("y", collision_objects);
+collision_object_detector("x", collision_object_state);
+collision_object_detector("y", collision_object_state);
 
 x += h_character_speed;
 y += v_character_speed;
@@ -71,9 +77,66 @@ image_xscale = xscale;
 
 #region // MUTATION
 
+function mutate_character(spr_i) {
+	spr_index = spr_i;
+	sprite_index = mutable_objects[spr_i];
+}
+
+function are_there_items_nearby() {
+	return true;
+}
+
+function change_item() {
+	show_message(string(global.mutable_objects));
+	//return spr_index == 0 ? 1 : 0;
+	return 0;
+}
+
+function mutation() {
+	if (are_there_items_nearby()) {
+		var item = change_item();
+		mutate_character(item);
+	}
+}
+
+mutable_objects = [spr_character, spr_can_of_soda, spr_table];
+
 if keyboard_check_pressed(vk_space) {
-	image_index = spr_can_of_soda;
+	mutation();
 }
 
 #endregion
 
+#region //RADAR
+
+function save_detected_object(arr) {
+	//var len = array_length(arr);
+	//for (var i = 0; i < len; ++i) {
+	//	mutable_objects_state[i] = arr[i];
+	//}
+	
+	//array_resize(mutable_objects_state, len);
+	
+	global.mutable_objects = arr;
+}
+
+function mutable_object_detector() {
+	var mutable_objects_detected = [];
+
+	for (var i = 0; i < array_length(MUTABLE_OBJECTS); ++i) {
+	     var find = collision_circle(x, y, 100, MUTABLE_OBJECTS[i], 0, 1);
+		 if (find) {
+			 array_push(mutable_objects_detected, MUTABLE_OBJECTS[i]);
+	    }
+	}
+	
+	save_detected_object(mutable_objects_detected);
+}
+
+mutable_object_detector();
+
+#endregion
+
+if keyboard_check_pressed(vk_tab) {
+	global.debug = !global.debug;
+}
