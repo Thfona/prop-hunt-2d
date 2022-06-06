@@ -4,7 +4,6 @@
 
 mutation_state = spr_index == 0;
 collision_object_state = mutation_state ? COLLISION_OBJECTS.character : COLLISION_OBJECTS.mutated;
-mutable_objects_state = 0;
 
 #endregion
 
@@ -14,8 +13,8 @@ down = keyboard_check(ord("S"));
 left = keyboard_check(ord("A"));
 right = keyboard_check(ord("D"));
 
-h_character_speed = (right - left) * CHARACTER_SPEED;
-v_character_speed = (down - up) * CHARACTER_SPEED;
+h_character_speed = (right - left) * global.CHARACTER_SPEED;
+v_character_speed = (down - up) * global.CHARACTER_SPEED;
 #endregion
 
 #region // COLLISION
@@ -83,12 +82,11 @@ function mutate_character(spr_i) {
 }
 
 function are_there_items_nearby() {
-	return true;
+	return array_length(global.mutable_objects) > 0;
 }
 
 function change_item() {
-	show_message(string(global.mutable_objects));
-	//return spr_index == 0 ? 1 : 0;
+	show_debug_message(string(global.mutable_objects));
 	return 0;
 }
 
@@ -96,6 +94,8 @@ function mutation() {
 	if (are_there_items_nearby()) {
 		var item = change_item();
 		mutate_character(item);
+	} else {
+		show_debug_message("Não tem ninguem: " + string(global.mutable_objects));	
 	}
 }
 
@@ -110,13 +110,6 @@ if keyboard_check_pressed(vk_space) {
 #region //RADAR
 
 function save_detected_object(arr) {
-	//var len = array_length(arr);
-	//for (var i = 0; i < len; ++i) {
-	//	mutable_objects_state[i] = arr[i];
-	//}
-	
-	//array_resize(mutable_objects_state, len);
-	
 	global.mutable_objects = arr;
 }
 

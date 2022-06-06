@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_floor_new",
-    "path": "sprites/spr_floor_new/spr_floor_new.yy",
+    "name": "spr_speech_bubble",
+    "path": "sprites/spr_speech_bubble/spr_speech_bubble.yy",
   },
   "solid": false,
   "visible": true,
@@ -20,7 +20,9 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
@@ -28,7 +30,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_floor",
+  "name": "obj_speech_bubble",
   "tags": [],
   "resourceType": "GMObject",
 }
