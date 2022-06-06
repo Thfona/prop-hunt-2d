@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_can_of_soda",
-    "path": "sprites/spr_can_of_soda/spr_can_of_soda.yy",
+    "name": "spr_character",
+    "path": "sprites/spr_character/spr_character.yy",
   },
   "solid": false,
   "visible": true,
@@ -29,7 +29,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_can_of_soda",
+  "name": "obj_shadow",
   "tags": [],
   "resourceType": "GMObject",
 }
