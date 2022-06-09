@@ -5,67 +5,25 @@ collision_object_state = mutation_state ? COLLISION_OBJECTS.character : COLLISIO
 
 #endregion
 
-#region // MOVEMENTS
-up = keyboard_check(ord("W"));
-down = keyboard_check(ord("S"));
-left = keyboard_check(ord("A"));
-right = keyboard_check(ord("D"));
+#region // START FN
+if (is_this_our_player) {
+	input_check();
+	set_player_states();
+	player_number = global.player_number;
+} else {
+	get_player_states();	
+}
 
-h_character_speed = (right - left) * global.CHARACTER_SPEED;
-v_character_speed = (down - up) * global.CHARACTER_SPEED;
+movements();
+
 #endregion
 
-#region // COLLISION
-function will_collide(axis, collision_obj) {
-	return axis == "x"
-		? place_meeting(x + h_character_speed, y, collision_obj)
-		: place_meeting(x, y + v_character_speed, collision_obj);
-}
-
-function is_colliding(axis, collision_obj) {
-	return axis == "x"
-		? place_meeting(x + sign(h_character_speed), y, collision_obj)
-		: place_meeting(x, y + sign(v_character_speed), collision_obj);
-}
-
-function detect_collision(axis, collision_obj) {
-	if will_collide(axis, collision_obj) {
-		while !is_colliding(axis, collision_obj) {
-			if axis == "x" {
-				x += sign(h_character_speed);
-			} else {
-				y += sign(v_character_speed);
-			}
-		}
-
-		if axis == "x" {
-			h_character_speed = 0;
-		} else {
-			v_character_speed = 0;
-		}
-	}
-}
-
-function collision_object_detector(axis, collision_objects) {
-	var len = array_length(collision_objects);
-	var i = len - 1;
-
-	repeat(len) {
-	   detect_collision(axis, collision_objects[i]);
-
-	   i -= 1;
-	}
-}
-
-collision_object_detector("x", collision_object_state);
-collision_object_detector("y", collision_object_state);
-
-var new_x = x + h_character_speed;
-var new_y = y + v_character_speed;
+#region // MOVEMENTS
 
 if up || down || left || right {
-	send_movement_event(new_x, new_y);
+	//send_information_to_the_server();
 }
+
 #endregion
 
 #region // ANIMATION
@@ -74,7 +32,7 @@ if (h_character_speed != 0) {
 	xscale = sign(h_character_speed);
 }
 
-image_xscale = xscale;
+image_xscale = xscale * (-1);
 
 #endregion
 
@@ -131,6 +89,25 @@ function mutable_object_detector() {
 }
 
 mutable_object_detector();
+
+#endregion
+
+#region //NETWORK
+
+function set_data() {
+	var data = ds_map_create();
+	var coordinate = { "x": x, "y": y };
+	ds_map_add(data, "id", id);
+	ds_map_add(data, "coordinate", coordinate);
+	ds_map_add(data, "image_xscale", image_xscale);
+	return data;
+}
+
+function send_information_to_the_server() {
+	var data = set_data();
+	show_debug_message("data" + string(data));
+	send_map_over_udp(global.IP, global.PORT, 100, data, msg_type.SET_PLAYER_STAT);
+}
 
 #endregion
 

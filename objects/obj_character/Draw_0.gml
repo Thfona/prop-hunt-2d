@@ -3,6 +3,8 @@
 
 draw_self();
 
+draw_text(x, y,"player " + string(player_number));
+
 function field_of_vision() {
 	draw_set_colour(c_yellow);
 	draw_circle(x, y, 100, true);

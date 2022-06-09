@@ -1,4 +1,7 @@
 // VARIABLES
+is_this_our_player = true;
+player_number = 0;
+
 up = -1;
 down = -1;
 left = -1;
@@ -10,7 +13,18 @@ v_character_speed = 0;
 xscale = 1;
 spr_index = 0;
 
-global.CHARACTER_SPEED = 6;
+enum PLAYER_STATES {
+	walk,
+	run,
+	idle,
+	idle_shoot,
+	run_shoot
+}
+
+CHARACTER = {
+	walk_speed: 6
+}
+
 COLLISION_OBJECTS = {
 	character: [obj_wall, obj_can_of_soda, obj_table],
 	mutated: [obj_wall]
