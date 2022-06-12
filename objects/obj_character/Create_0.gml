@@ -7,6 +7,12 @@ down = -1;
 left = -1;
 right = -1;
 
+skin = {
+	glasses: 0,
+	face: 0,
+	hat: 0
+}
+
 h_character_speed = 0;
 v_character_speed = 0;
 

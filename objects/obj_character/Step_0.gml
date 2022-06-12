@@ -28,8 +28,17 @@ if up || down || left || right {
 
 #region // ANIMATION
 
-if (h_character_speed != 0) {
+var has_horizontal_speed = h_character_speed != 0;
+var has_vertical_speed = v_character_speed != 0;
+
+if (has_horizontal_speed) {
 	xscale = sign(h_character_speed);
+}
+
+if (has_horizontal_speed || has_vertical_speed) {
+	sprite_index = spr_character_moviment;
+} else {
+	sprite_index = spr_character;
 }
 
 image_xscale = xscale * (-1);
