@@ -6,9 +6,12 @@ if (async_load[? "size"] > 0) {
 	response = json_decode(message_id);
 	
 	if (ds_map_find_value(response, "type") == msg_type.JOIN_HOST) {
-		show_debug_message("< " + message_id);
-		global.player_number = ds_map_find_value(response, "player_number");
-		global.host_number = ds_map_find_value(response, "host_number");
+		if (global.debug) {
+			show_debug_message("< " + message_id);
+		}
+
+		global._id = ds_map_find_value(response, "_id");
+		global.host = ds_map_find_value(response, "host");
 		did_we_joined = true;
 		
 		room_goto(rm_map1);

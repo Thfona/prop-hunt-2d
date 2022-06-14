@@ -5,18 +5,28 @@ if (async_load[? "size"] > 0) {
 	response = json_decode(message_id);
 	
 	if (ds_map_find_value(response, "type") == msg_type.GET_PLAYER_STAT) {
-		show_debug_message("charactert <-- " + string(message_id));		
-		
+		if (global.debug) {
+			show_debug_message("charactert <-- " + string(message_id));		
+		}
+
 		var player_stat = ds_map_find_value(response, "player_stat");
-		var pn = ds_map_find_value(player_stat, "player_number");
+		var pn = ds_map_find_value(player_stat, "_id");
 		
-		if (pn == player_number) {
-			up = ds_map_find_value(player_stat, "up");
-			down = ds_map_find_value(player_stat, "down");
-			left = ds_map_find_value(player_stat, "left");
-			right = ds_map_find_value(player_stat, "right");
-			x = ds_map_find_value(player_stat, "x");
-			y = ds_map_find_value(player_stat, "y");
+		if (pn == instance_player._id) {
+			var coordinate = ds_map_find_value(player_stat, "coordinate");
+			var skin = ds_map_find_value(player_stat, "skin");
+			var key = ds_map_find_value(player_stat, "key");
+			
+			instance_player.key.up = ds_map_find_value(key, "up");
+			instance_player.key.down = ds_map_find_value(key, "down");
+			instance_player.key.left = ds_map_find_value(key, "left");
+			instance_player.key.right = ds_map_find_value(key, "right");
+			instance_player.skin.hat = ds_map_find_value(skin, "hat");
+			instance_player.skin.face = ds_map_find_value(skin, "face");
+			instance_player.skin.glasses = ds_map_find_value(skin, "glasses");
+			
+			x = ds_map_find_value(coordinate, "x");
+			y = ds_map_find_value(coordinate, "y");
 		}
 	}
 }

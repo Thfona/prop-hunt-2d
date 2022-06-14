@@ -1,16 +1,19 @@
 // VARIABLES
 is_this_our_player = true;
-player_number = 0;
 
-up = -1;
-down = -1;
-left = -1;
-right = -1;
-
-skin = {
-	glasses: 0,
-	face: 0,
-	hat: 0
+instance_player = {
+	_id: 0,
+	key: {
+		up: -1,
+		down: -1, 
+		left: -1,
+		right: -1
+	},
+	skin: {
+		glasses: 0,
+		face: 0,
+		hat: 0
+	}
 }
 
 h_character_speed = 0;
@@ -38,6 +41,3 @@ COLLISION_OBJECTS = {
 MUTABLE_OBJECTS = [obj_can_of_soda, obj_table];
 
 global.mutable_objects = [];
-
-// DEV
-global.debug = 0;

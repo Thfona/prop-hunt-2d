@@ -6,7 +6,9 @@ if (async_load[? "size"] > 0) {
 	response = json_decode(message_id);
 	
 	if (ds_map_find_value(response, "type") == msg_type.STOP_HOST) {
-		show_debug_message("< " + message_id);
+		if (global.debug) {
+			show_debug_message("< " + message_id);
+		}
 		
 		var res = ds_map_find_value(response, "res");
 		

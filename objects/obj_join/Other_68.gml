@@ -5,9 +5,10 @@ if (async_load[? "size"] > 0) {
 	
 	response = json_decode(message_id);
 	
-	if (ds_map_find_value(response, "type") == msg_type.GET_HOSTS) {
-		show_debug_message("< " + message_id);
-		
+	if (ds_map_find_value(response, "type") == msg_type.GET_HOSTS) {	
+		if (global.debug) {
+			show_debug_message("< " + message_id);
+		}
 		var hosts = ds_map_find_value(response, "hosts");
 		number_of_hosts = ds_list_size(hosts);
 		

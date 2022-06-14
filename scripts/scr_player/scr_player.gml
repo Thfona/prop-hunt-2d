@@ -1,50 +1,66 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function input_check() {
-	up = keyboard_check(ord("W"));
-	down = keyboard_check(ord("S"));
-	left = keyboard_check(ord("A"));
-	right = keyboard_check(ord("D"));	
+	instance_player.key.up = keyboard_check(ord("W"));
+	instance_player.key.down = keyboard_check(ord("S"));
+	instance_player.key.left = keyboard_check(ord("A"));
+	instance_player.key.right = keyboard_check(ord("D"));	
 }
 
 function get_player_states() {
-	data = ds_map_create();
+	data = ds_map_create();	
 	
-	ds_map_add(data, "host_number", global.host_number);
-	ds_map_add(data, "player_number", player_number);
+	ds_map_add(data, "host", global.host);
+	ds_map_add(data, "_id", instance_player._id)
 	ds_map_add(data, "player_stat", noone);
 	
-	show_debug_message("RECUPERANDO STATES DO PLAYER");
-	
+	if (global.debug) {
+		show_debug_message("RECUPERANDO STATES DO PLAYER");
+	}
+
 	send_map_over_udp(global.IP, global.PORT, 100, data, msg_type.GET_PLAYER_STAT);
 }
 
 function set_player_states() {
 	data = ds_map_create();
 	
-	ds_map_add(data, "up", up);
-	ds_map_add(data, "down", down);
-	ds_map_add(data, "left", left);
-	ds_map_add(data, "right", right);
-	ds_map_add(data, "x", x);
-	ds_map_add(data, "y", y);
-	ds_map_add(data, "host_number", global.host_number);
-	ds_map_add(data, "player_number", global.player_number);
+	data[? "coordinate"] = {
+		x: x,
+		y: y
+	}
 	
-	show_debug_message("ENVIANDO STATES DO PLAYER");
+	data[? "key"] = {
+		up: instance_player.key.up,
+		down: instance_player.key.down,
+		left: instance_player.key.left,
+		right: instance_player.key.right,
+	}
 	
+	data[? "skin"] = {
+		hat: instance_player.skin.hat,
+		glasses: instance_player.skin.glasses,
+		face: instance_player.skin.face
+	}
+	
+	ds_map_add(data, "host", global.host);
+	ds_map_add(data, "_id", global._id);
+	
+	if (global.debug) {
+		show_debug_message("ENVIANDO STATES DO PLAYER");
+	}
+
 	send_map_over_udp(global.IP, global.PORT, 1000, data, msg_type.SET_PLAYER_STAT);
 }
 
 function movements() {
-	h_character_speed = (right - left) * CHARACTER.walk_speed;
-	v_character_speed = (down - up) *  CHARACTER.walk_speed;
+	h_character_speed = (instance_player.key.right - instance_player.key.left) * CHARACTER.walk_speed;
+	v_character_speed = (instance_player.key.down - instance_player.key.up) *  CHARACTER.walk_speed;
 	
-	collision_object_detector("x", collision_object_state);
+	collision_object_detector("x", collision_object_state); 
 	collision_object_detector("y", collision_object_state);
-
+ 
 	x += h_character_speed;
-	y += v_character_speed;
+	y += v_character_speed; 
 }
 
 #region //COLLISION

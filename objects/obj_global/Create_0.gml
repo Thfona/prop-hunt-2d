@@ -1,9 +1,10 @@
 global.client = network_create_socket(network_socket_udp);
-global.IP = "127.0.0.1";
-global.PORT = 8080;
 
-global.host_number = noone;
-global.player_number = noone;
+global.IP = "ec2-3-86-250-91.compute-1.amazonaws.com";
+global.PORT = "8080";
+
+global.host= noone;
+global._id = noone;
 
 enum msg_type {
 	CREATE_HOST,
@@ -14,3 +15,6 @@ enum msg_type {
 	GET_HOSTS,
 	GET_NEW_PLAYERS
 }
+
+// DEV
+global.debug = 0;

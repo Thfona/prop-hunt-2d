@@ -6,13 +6,19 @@ if (async_load[? "size"] > 0) {
 	response = json_decode(message_id);
 	
 	if (ds_map_find_value(response, "type") == msg_type.CREATE_HOST) {
-		show_debug_message("button_host <-- " + string(message_id));
-		var host_number = ds_map_find_value(response, "host_number");			
-		var player_number = ds_map_find_value(response, "player_number");
-		show_debug_message("O server " + string(host_number) + " foi criado! " + " O numero do seu jogador é " + string(player_number));
+		if (global.debug) {
+			show_debug_message("button_host <-- " + string(message_id));
+		}
+
+		var host = ds_map_find_value(response, "host");			
+		var _id = ds_map_find_value(response, "_id");
 		
-		global.host_number = host_number;
-		global.player_number = player_number;
+		if (global.debug) {
+			show_debug_message("O server " + string(host) + " foi criado! " + " O numero do seu jogador é " + string(_id));
+		}
+
+		global.host = host;
+		global._id = _id;
 		
 		room_goto(rm_map1);
 	}

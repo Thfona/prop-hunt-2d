@@ -6,8 +6,10 @@ function send_map_over_udp(ip, port, size, map, type) {
 	
 	ds_map_add(map, "type", type)
 	var dataJson = json_encode(map);
-
-	show_debug_message("ENVIANDO PARA O SERVER --> " + dataJson);
+	
+	if (global.debug) {
+		show_debug_message("ENVIANDO PARA O SERVER --> " + dataJson);
+	}
 
 	ds_map_destroy(map);
 

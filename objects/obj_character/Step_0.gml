@@ -9,20 +9,12 @@ collision_object_state = mutation_state ? COLLISION_OBJECTS.character : COLLISIO
 if (is_this_our_player) {
 	input_check();
 	set_player_states();
-	player_number = global.player_number;
+	instance_player._id = global._id;
 } else {
 	get_player_states();	
 }
 
 movements();
-
-#endregion
-
-#region // MOVEMENTS
-
-if up || down || left || right {
-	//send_information_to_the_server();
-}
 
 #endregion
 
@@ -98,25 +90,6 @@ function mutable_object_detector() {
 }
 
 mutable_object_detector();
-
-#endregion
-
-#region //NETWORK
-
-function set_data() {
-	var data = ds_map_create();
-	var coordinate = { "x": x, "y": y };
-	ds_map_add(data, "id", id);
-	ds_map_add(data, "coordinate", coordinate);
-	ds_map_add(data, "image_xscale", image_xscale);
-	return data;
-}
-
-function send_information_to_the_server() {
-	var data = set_data();
-	show_debug_message("data" + string(data));
-	send_map_over_udp(global.IP, global.PORT, 100, data, msg_type.SET_PLAYER_STAT);
-}
 
 #endregion
 
