@@ -1,7 +1,9 @@
 #region // STATES
 
 mutation_state = spr_index == 0;
-collision_object_state = mutation_state ? COLLISION_OBJECTS.character : COLLISION_OBJECTS.mutated;
+collision_object_state = mutation_state
+	? global.COLLISION_OBJECTS.character
+	: global.COLLISION_OBJECTS.mutated;
 
 #endregion
 
@@ -9,14 +11,15 @@ collision_object_state = mutation_state ? COLLISION_OBJECTS.character : COLLISIO
 if (is_this_our_player) {
 	input_check();
 	set_player_states();
+	attack();
+	discard_weapon();
+	pickup_weapon();
 	instance_player._id = global._id;
 } else {
 	get_player_states();	
 }
 
 movements();
-attack();
-discard_weapon();
 
 #endregion
 

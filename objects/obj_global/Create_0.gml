@@ -1,8 +1,8 @@
 global.client = network_create_socket(network_socket_udp);
 
-//global.IP = "ec2-3-86-250-91.compute-1.amazonaws.com";
+// global.IP = "ec2-3-86-250-91.compute-1.amazonaws.com";
 global.IP = "127.0.0.1";
-global.PORT = "8080";
+global.PORT = "3000";
 
 global.host= noone;
 global._id = noone;
@@ -16,6 +16,11 @@ enum msg_type {
 	GET_HOSTS,
 	GET_NEW_PLAYERS
 }
+
+global.COLLISION_OBJECTS = {
+	character: [obj_wall, obj_can_of_soda, obj_table],
+	mutated: [obj_wall]
+};
 
 // DEV
 global.debug = 0;
