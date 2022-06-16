@@ -1,0 +1,2 @@
+shotting();
+slowing_down();

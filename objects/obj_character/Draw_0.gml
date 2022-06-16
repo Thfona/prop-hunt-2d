@@ -17,7 +17,7 @@ if (global.debug) {
 function change_skin(sprite, variant) {
 	draw_sprite_ext(sprite, variant, x, y, image_xscale, 1, 0, c_white, 1);
 }
-show_debug_message("instance_player " + string(instance_player));
+
 change_skin(spr_hats, instance_player.skin.hat);
 change_skin(spr_faces, instance_player.skin.face);
 change_skin(spr_glasses, instance_player.skin.glasses);

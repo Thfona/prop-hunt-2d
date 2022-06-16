@@ -1,6 +1,7 @@
 global.client = network_create_socket(network_socket_udp);
 
-global.IP = "ec2-3-86-250-91.compute-1.amazonaws.com";
+//global.IP = "ec2-3-86-250-91.compute-1.amazonaws.com";
+global.IP = "127.0.0.1";
 global.PORT = "8080";
 
 global.host= noone;

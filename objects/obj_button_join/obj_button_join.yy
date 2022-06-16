@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_button_join",
-    "path": "sprites/spr_button_join/spr_button_join.yy",
+    "name": "BOTAO_TESTE",
+    "path": "sprites/BOTAO_TESTE/BOTAO_TESTE.yy",
   },
   "solid": false,
   "visible": true,
@@ -30,8 +30,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "GUI",
-    "path": "folders/Objects/GUI.yy",
+    "name": "menu",
+    "path": "folders/Objects/GUI/menu.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_button_join",

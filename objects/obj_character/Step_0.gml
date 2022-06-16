@@ -15,6 +15,8 @@ if (is_this_our_player) {
 }
 
 movements();
+attack();
+discard_weapon();
 
 #endregion
 
@@ -33,7 +35,7 @@ if (has_horizontal_speed || has_vertical_speed) {
 	sprite_index = spr_character;
 }
 
-image_xscale = xscale * (-1);
+//image_xscale = xscale * (-1);
 
 #endregion
 

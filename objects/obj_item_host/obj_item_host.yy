@@ -34,8 +34,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "GUI",
-    "path": "folders/Objects/GUI.yy",
+    "name": "join",
+    "path": "folders/Objects/GUI/join.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_item_host",

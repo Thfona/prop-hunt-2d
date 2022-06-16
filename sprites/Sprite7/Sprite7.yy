@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "character",
-    "path": "folders/Sprites/character.yy",
+    "name": "Character",
+    "path": "folders/Sprites/Character.yy",
   },
   "resourceVersion": "1.0",
   "name": "Sprite7",

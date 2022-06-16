@@ -31,8 +31,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "GUI",
-    "path": "folders/Objects/GUI.yy",
+    "name": "menu",
+    "path": "folders/Objects/GUI/menu.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_button_host",

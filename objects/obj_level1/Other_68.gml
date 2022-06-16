@@ -39,8 +39,6 @@ if (async_load[? "size"] > 0) {
 			var coordinate = ds_map_find_value(player, "coordinate");
 			var xx = ds_map_find_value(coordinate, "x");
 			var yy = ds_map_find_value(coordinate, "y");
-				
-			show_debug_message("PASTEL " + string(xx) + string(yy));
 			
 			new_player = instance_create_layer(xx, yy, "Instances", obj_character);
 			new_player.is_this_our_player = false;

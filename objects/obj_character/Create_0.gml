@@ -7,12 +7,17 @@ instance_player = {
 		up: -1,
 		down: -1, 
 		left: -1,
-		right: -1
+		right: -1,
+		shot: -1,
+		discart: -1
 	},
 	skin: {
 		glasses: 0,
 		face: 0,
 		hat: 0
+	},
+	equipment: {
+		gun: noone
 	}
 }
 
@@ -22,16 +27,8 @@ v_character_speed = 0;
 xscale = 1;
 spr_index = 0;
 
-enum PLAYER_STATES {
-	walk,
-	run,
-	idle,
-	idle_shoot,
-	run_shoot
-}
-
 CHARACTER = {
-	walk_speed: 6
+	walk_speed: 4
 }
 
 COLLISION_OBJECTS = {
