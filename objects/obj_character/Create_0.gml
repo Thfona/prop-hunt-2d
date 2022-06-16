@@ -3,13 +3,15 @@ is_this_our_player = true;
 
 instance_player = {
 	_id: 0,
+	pickup_radius: 50,
 	key: {
 		up: -1,
 		down: -1, 
 		left: -1,
 		right: -1,
 		shot: -1,
-		discart: -1
+		discart: -1,
+		pickup: -1
 	},
 	skin: {
 		glasses: 0,
@@ -31,10 +33,6 @@ CHARACTER = {
 	walk_speed: 4
 }
 
-COLLISION_OBJECTS = {
-	character: [obj_wall, obj_can_of_soda, obj_table],
-	mutated: [obj_wall]
-};
 MUTABLE_OBJECTS = [obj_can_of_soda, obj_table];
 
 global.mutable_objects = [];

@@ -1,4 +1,3 @@
-
-if (other.instance_player.equipment.gun == noone) {	
-	other.instance_player.equipment.gun = id;
-}
+//if (other.instance_player.equipment.gun == noone) {	
+//	other.instance_player.equipment.gun = id;
+//}

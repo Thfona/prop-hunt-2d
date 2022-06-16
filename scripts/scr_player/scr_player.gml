@@ -1,11 +1,10 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function input_check() {
 	instance_player.key.up = keyboard_check(ord("W"));
 	instance_player.key.down = keyboard_check(ord("S"));
 	instance_player.key.left = keyboard_check(ord("A"));
 	instance_player.key.right = keyboard_check(ord("D"));
 	instance_player.key.discart = keyboard_check_released(ord("G"));
+	instance_player.key.pickup = keyboard_check_released(ord("E"));
 	instance_player.key.shot = mouse_check_button(mb_left);
 }
 
@@ -113,11 +112,11 @@ function collision_object_detector(axis, collision_objects) {
 
 #endregion
 
-#region //ATTACK
+#region //WEAPON
 function attack() {
 	if (instance_player.equipment.gun) {
 		var _shooting = instance_player.key.shot;
-		instance_player.equipment.gun.can_shoot = _shooting;
+		instance_player.equipment.gun.is_shooting = _shooting;
 		
 		var _direction = point_direction(x, y, mouse_x, mouse_y);
 		var _x = x + lengthdir_x(sprite_height / 5, _direction);
@@ -129,15 +128,49 @@ function attack() {
 	}
 }
 
+function can_i_discard_weapon(collision_objects) {
+	if (instance_player.equipment.gun) {
+		var has_objects_in_contact = false;
+	
+		with(instance_player.equipment.gun) {
+			for (var i = 0; i < array_length(collision_objects); ++i) {
+				var find = place_meeting(x + hspeed, y, collision_objects[i]);
+				if (find) { has_objects_in_contact = true; }
+			}
+		}
+		
+		return !has_objects_in_contact;
+	} else {
+		return false;
+	}
+}
+
 function discard_weapon() {
-	if (instance_player.key.discart) {
+	var can_discard = can_i_discard_weapon(global.COLLISION_OBJECTS.character);
+	if (instance_player.key.discart && can_discard) {
 		instance_player.equipment.gun.speed = 5;
 		instance_player.equipment.gun.direction = instance_player.equipment.gun.image_angle;
-		
-		
-		
+		instance_player.equipment.gun.is_being_carried = noone;
+		instance_player.equipment.gun.target = noone;
 		instance_player.equipment.gun = noone;
 	}
 }
 
+function pickup_weapon() {
+	if (instance_player.key.pickup) {
+		var pickup_list = ds_list_create();
+		var pickup_count = collision_circle_list(x, y, instance_player.pickup_radius, obj_gun_default, false, true, pickup_list, true);
+		
+		if (pickup_count > 0) {
+			if (instance_player.equipment.gun == noone) {
+				instance_player.equipment.gun = pickup_list[| 0];
+				
+				instance_player.equipment.gun.target = id;
+				instance_player.equipment.gun.is_being_carried = true;
+			} 
+		}
+		
+		ds_list_destroy(pickup_list);
+	}
+}
 #endregion
