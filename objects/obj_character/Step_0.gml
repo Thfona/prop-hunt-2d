@@ -11,9 +11,7 @@ collision_object_state = mutation_state
 if (is_this_our_player) {
 	input_check();
 	set_player_states();
-	attack();
-	discard_weapon();
-	pickup_weapon();
+	character_weapon();
 	instance_player._id = global._id;
 } else {
 	get_player_states();	

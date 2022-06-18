@@ -30,6 +30,9 @@
     {"propertyId":{"name":"firing_speed","path":"objects/obj_gun_default/obj_gun_default.yy",},"objectId":{"name":"obj_gun_default","path":"objects/obj_gun_default/obj_gun_default.yy",},"value":"0.5","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"firing_delay","path":"objects/obj_gun_default/obj_gun_default.yy",},"objectId":{"name":"obj_gun_default","path":"objects/obj_gun_default/obj_gun_default.yy",},"value":"0.1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"shot","path":"objects/obj_gun_default/obj_gun_default.yy",},"objectId":{"name":"obj_gun_default","path":"objects/obj_gun_default/obj_gun_default.yy",},"value":"obj_bullet","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"knockback","path":"objects/obj_gun_default/obj_gun_default.yy",},"objectId":{"name":"obj_gun_default","path":"objects/obj_gun_default/obj_gun_default.yy",},"value":"6.6","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"recoil","path":"objects/obj_gun_default/obj_gun_default.yy",},"objectId":{"name":"obj_gun_default","path":"objects/obj_gun_default/obj_gun_default.yy",},"value":"8.7","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"precision","path":"objects/obj_gun_default/obj_gun_default.yy",},"objectId":{"name":"obj_gun_default","path":"objects/obj_gun_default/obj_gun_default.yy",},"value":"10","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Guns",

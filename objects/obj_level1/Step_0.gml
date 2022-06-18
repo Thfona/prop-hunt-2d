@@ -11,5 +11,5 @@ if (should_i_try_to_check_new_player) {
 		show_debug_message("RECUPERANDO TODOS OS PLAYERS");
 	}
 
-	send_map_over_udp(global.IP, global.PORT, 200, data, msg_type.GET_NEW_PLAYERS);	
+	send_map_over_udp(global.IP, global.PORT, 200, data, msg_type.GET_PLAYERS_FROM_SERVER);	
 }

@@ -5,7 +5,7 @@ if (async_load[? "size"] > 0) {
 	
 	response = json_decode(message_id);
 	
-	if (ds_map_find_value(response, "type") == msg_type.GET_NEW_PLAYERS) {
+	if (ds_map_find_value(response, "type") == msg_type.GET_PLAYERS_FROM_SERVER) {
 		if (global.debug) {
 			show_debug_message("obj_level1  <-- " + string(message_id));
 		}
@@ -14,6 +14,7 @@ if (async_load[? "size"] > 0) {
 		
 		number_oof_player_already_in_level = instance_number(obj_character);
 		
+		// REMOVE DA LISTA DE NOVOS JOGADORES OS JOGADORES JA CRIADOS
 		if (number_oof_player_already_in_level > 0) {
 			for (var i = 0; i < number_oof_player_already_in_level; ++i) {
 			    var ext_player = instance_find(obj_character, i);
@@ -32,6 +33,7 @@ if (async_load[? "size"] > 0) {
 			}
 		}
 		
+		// CRIA UM JOGADOR NOVO NA TELA
 		var number_of_player_remain = ds_list_size(players);
 		
 		for (var i = 0; i < number_of_player_remain; ++i) {

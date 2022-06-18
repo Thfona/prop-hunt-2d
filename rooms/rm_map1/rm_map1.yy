@@ -14,8 +14,10 @@
   ],
   "layers": [
     {"instances":[
-        {"properties":[],"isDnd":false,"objectId":{"name":"obj_gun_default","path":"objects/obj_gun_default/obj_gun_default.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":192.0,"y":192.0,"resourceVersion":"1.0","name":"inst_661B03CD","tags":[],"resourceType":"GMRInstance",},
-        {"properties":[],"isDnd":false,"objectId":{"name":"obg_gun_red","path":"objects/obg_gun_red/obg_gun_red.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":192.0,"y":256.0,"resourceVersion":"1.0","name":"inst_1A4FE7BB","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_gun_default","path":"objects/obj_gun_default/obj_gun_default.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":160.0,"y":192.0,"resourceVersion":"1.0","name":"inst_661B03CD","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obg_gun_red","path":"objects/obg_gun_red/obg_gun_red.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":160.0,"y":224.0,"resourceVersion":"1.0","name":"inst_1A4FE7BB","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_teste","path":"objects/obj_teste/obj_teste.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":160.0,"y":544.0,"resourceVersion":"1.0","name":"inst_37F17BCE","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_block","path":"objects/obj_block/obj_block.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":480.0,"resourceVersion":"1.0","name":"inst_2E394F44","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Bullets","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_can_of_soda","path":"objects/obj_can_of_soda/obj_can_of_soda.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":512.0,"y":288.0,"resourceVersion":"1.0","name":"inst_4C9187E","tags":[],"resourceType":"GMRInstance",},
@@ -386,7 +388,6 @@
     {"name":"inst_1A3A4122","path":"rooms/rm_map1/rm_map1.yy",},
     {"name":"inst_C3CE95D","path":"rooms/rm_map1/rm_map1.yy",},
     {"name":"inst_44E9C5F9","path":"rooms/rm_map1/rm_map1.yy",},
-    {"name":"inst_239B3FEA","path":"rooms/rm_map1/rm_map1.yy",},
     {"name":"inst_49E0ECA5","path":"rooms/rm_map1/rm_map1.yy",},
     {"name":"inst_661B03CD","path":"rooms/rm_map1/rm_map1.yy",},
     {"name":"inst_4C9187E","path":"rooms/rm_map1/rm_map1.yy",},
@@ -395,6 +396,9 @@
     {"name":"inst_1A3A4122","path":"rooms/rm_map1/rm_map1.yy",},
     {"name":"inst_C3CE95D","path":"rooms/rm_map1/rm_map1.yy",},
     {"name":"inst_1A4FE7BB","path":"rooms/rm_map1/rm_map1.yy",},
+    {"name":"inst_37F17BCE","path":"rooms/rm_map1/rm_map1.yy",},
+    {"name":"inst_2E394F44","path":"rooms/rm_map1/rm_map1.yy",},
+    {"name":"inst_239B3FEA","path":"rooms/rm_map1/rm_map1.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

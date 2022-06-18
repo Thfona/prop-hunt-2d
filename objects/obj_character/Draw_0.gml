@@ -3,7 +3,12 @@
 
 draw_self();
 
-draw_text(x, y,"player " + string(instance_player._id));
+function write_the_characters_name() {
+	var _x = x - (sprite_width / 2);
+	var _y = y - ((sprite_height / 2) + 13);
+
+	draw_text(_x, _y, "player " + string(instance_player._id));
+}
 
 function field_of_vision() {
 	draw_set_colour(c_yellow);
@@ -21,6 +26,8 @@ function change_skin(sprite, variant) {
 change_skin(spr_hats, instance_player.skin.hat);
 change_skin(spr_faces, instance_player.skin.face);
 change_skin(spr_glasses, instance_player.skin.glasses);
+
+write_the_characters_name();
 
 // TODO: Codigo para teste de troca de SKIN, apagar futuramente;
 if (keyboard_check_pressed(ord("I"))) {

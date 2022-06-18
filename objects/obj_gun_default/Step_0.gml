@@ -1,2 +1,0 @@
-shotting();
-slowing_down();

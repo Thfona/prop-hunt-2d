@@ -14,13 +14,15 @@ enum msg_type {
 	SET_PLAYER_STAT,
 	GET_PLAYER_STAT,
 	GET_HOSTS,
-	GET_NEW_PLAYERS
+	GET_PLAYERS_FROM_SERVER
 }
 
 global.COLLISION_OBJECTS = {
-	character: [obj_wall, obj_can_of_soda, obj_table],
+	character: [obj_wall, obj_can_of_soda, obj_table, obj_block],
 	mutated: [obj_wall]
 };
+
+global.ammunition = 0;
 
 // DEV
 global.debug = 0;

@@ -26,23 +26,10 @@ function get_player_states() {
 function set_player_states() {
 	data = ds_map_create();
 	
-	data[? "coordinate"] = {
-		x: x,
-		y: y
-	}
-	
-	data[? "key"] = {
-		up: instance_player.key.up,
-		down: instance_player.key.down,
-		left: instance_player.key.left,
-		right: instance_player.key.right,
-	}
-	
-	data[? "skin"] = {
-		hat: instance_player.skin.hat,
-		glasses: instance_player.skin.glasses,
-		face: instance_player.skin.face
-	}
+	data[? "coordinate"] = { x: x, y: y	};
+	data[? "key"] = instance_player.key;
+	data[? "skin"] = instance_player.skin;
+	data[? "equipment"] = instance_player.equipment;
 	
 	ds_map_add(data, "host", global.host);
 	ds_map_add(data, "_id", global._id);
@@ -64,7 +51,7 @@ function movements() {
 	collision_object_detector("y", collision_object_state);
  
 	x += h_character_speed;
-	y += v_character_speed; 
+	y += v_character_speed;
 }
 #endregion
 
@@ -113,36 +100,42 @@ function collision_object_detector(axis, collision_objects) {
 #endregion
 
 #region //WEAPON
-function attack() {
+
+function character_weapon() {
 	if (instance_player.equipment.gun) {
-		var _shooting = instance_player.key.shot;
-		instance_player.equipment.gun.is_shooting = _shooting;
-		
-		var _direction = point_direction(x, y, mouse_x, mouse_y);
-		var _x = x + lengthdir_x(sprite_height / 5, _direction);
-		var _y = y + lengthdir_y((sprite_width) / 5, _direction);
-		
-		instance_player.equipment.gun.x = _x;
-		instance_player.equipment.gun.y = _y + 15;
-		instance_player.equipment.gun.image_angle = _direction;
+		attack();
+		weapon_follow_player();
+		discard_weapon();
 	}
+	pickup_weapon();
+}
+
+function attack() {
+	var _shooting = instance_player.key.shot;
+	instance_player.equipment.gun.is_shooting = _shooting;
+}
+
+function weapon_follow_player() {
+	var _direction = point_direction(x, y, mouse_x, mouse_y);
+	var _x = x + lengthdir_x(sprite_height / 5, _direction);
+	var _y = y + lengthdir_y((sprite_width) / 5, _direction);
+		
+	instance_player.equipment.gun.x = _x;
+	instance_player.equipment.gun.y = _y + 15;
+	instance_player.equipment.gun.image_angle = _direction;
 }
 
 function can_i_discard_weapon(collision_objects) {
-	if (instance_player.equipment.gun) {
-		var has_objects_in_contact = false;
+	var has_objects_in_contact = false;
 	
-		with(instance_player.equipment.gun) {
-			for (var i = 0; i < array_length(collision_objects); ++i) {
-				var find = place_meeting(x + hspeed, y, collision_objects[i]);
-				if (find) { has_objects_in_contact = true; }
-			}
+	with(instance_player.equipment.gun) {
+		for (var i = 0; i < array_length(collision_objects); ++i) {
+			var find = place_meeting(x + hspeed, y, collision_objects[i]);
+			if (find) { has_objects_in_contact = true; }
 		}
-		
-		return !has_objects_in_contact;
-	} else {
-		return false;
 	}
+		
+	return !has_objects_in_contact;
 }
 
 function discard_weapon() {
@@ -165,7 +158,7 @@ function pickup_weapon() {
 			if (instance_player.equipment.gun == noone) {
 				instance_player.equipment.gun = pickup_list[| 0];
 				
-				instance_player.equipment.gun.target = id;
+				instance_player.equipment.gun.target = instance_player._id;
 				instance_player.equipment.gun.is_being_carried = true;
 			} 
 		}
